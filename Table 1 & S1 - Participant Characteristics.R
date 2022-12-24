@@ -36,6 +36,6 @@ tbl_summary(fungi_data_100[c("sex", "csec", "Prebirth_abs_oralIV_yn", "Mother_ab
             label = c(sex ~ "Infant Sex", csec ~ "Delivery Mode", Prebirth_abs_oralIV_yn ~ "Prenatal Antibiotics", Mother_abs_birth_yn ~ "Intrapartum Antibiotics", BF_3m_status ~ "Breastfeeding Status at 3 Months", solids_6m ~ "Solids Feeding at 6 Months", BF_duration_imp ~ "Breastfeeding Duration (months)", Child_6moto1Y_abs ~ "Infant Antibiotic Exposure (6 months-1 year)", AS_bev4 ~ "Maternal ASB Consumption During Pregnancy", hei2010 ~ "Maternal Healthy Eating Index (2010)", mom_bmi_best ~ "Maternal BMI", Father_BMI ~ "Paternal BMI", site ~ "Study Site"),
             statistic = list(all_continuous() ~ "{mean} ({sd})"),
             digits = all_continuous() ~ 2) %>% modify_header(label ~ "") %>% add_p(pvalue_fun = ~style_pvalue(.x, digits = 2)) %>% 
-  modify_spanning_header(label ~ "**Cohort Characteristics by BMI Category at 5 years**")
+  modify_spanning_header(label ~ "**Participant Characteristics by BMI Category at 5 years**")
 
-# Comparison tables repeated from BMI categories at birth, 3 months, 1 year, and 3 years
+# Comparison tables repeated for BMI categories at birth, 3 months, 1 year, and 3 years
