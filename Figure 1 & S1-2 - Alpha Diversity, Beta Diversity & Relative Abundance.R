@@ -1,4 +1,4 @@
-## Fungal Alpha Diversity, Beta Diversity & Relative Abundance (Figures 1 & S1)
+## Fungal Alpha Diversity, Beta Diversity & Relative Abundance (Figures 1 & S1-2)
 
 # Load packages
 library(tidyverse)
@@ -176,7 +176,7 @@ fig_chao1_pattern <- ggplot(fungi_data_chao1, aes(x = Sample_time, y = Chao1, gr
   geom_line(show.legend = F) +
   xlab("Age (Months)")+
   ylab("Richness (Chao1)")+
-  labs(color = "Richness Trend")+ 
+  labs(color = "Richness Pattern")+ 
   scale_color_manual(values = c("#2db27d", "#481b6d","goldenrod2"))+
   theme_bw()+
   theme(strip.text.y = element_text(face = "italic"),
@@ -214,7 +214,7 @@ fig_shannon_pattern <- ggplot(fungi_data_shannon, aes(x = Sample_time, y = Shann
   geom_line(show.legend = F) +
   xlab("Age (Months)")+
   ylab("Alpha Diversity (Shannon)")+
-  labs(color = "Alpha Diversity Trend")+ 
+  labs(color = "Alpha Diversity Pattern")+ 
   scale_color_manual(values = c("#2db27d", "#481b6d","goldenrod2"))+
   theme_bw()+
   theme(strip.text.y = element_text(face = "italic"),
@@ -292,8 +292,8 @@ PCoA_fungi_chao1_3 + stat_ellipse(level = 0.95, geom = "polygon", alpha = 1/6, l
         axis.text = element_text(size = 9.5),
         strip.text.x = element_text(face = "bold"),
         plot.title = element_text(colour = "black", size = 10, face = "bold", hjust=0.5)) +
-  scale_color_manual(name = "Richness Trend", values = c("black","black")) + 
-  scale_fill_manual(name = "Richness Trend", values = c("#2db27d", "#481b6d")) + 
+  scale_color_manual(name = "Richness Pattern", values = c("black","black")) + 
+  scale_fill_manual(name = "Richness Pattern", values = c("#2db27d", "#481b6d")) + 
   guides(size = FALSE)
 
 # PERMANOVA by Chao1 trend at 3 months
@@ -356,8 +356,8 @@ PCoA_fungi_chao1_12 + stat_ellipse(level = 0.95, geom = "polygon", alpha = 1/6, 
         axis.text = element_text(size = 9.5),
         strip.text.x = element_text(face = "bold"),
         plot.title = element_text(colour = "black", size = 10, face = "bold", hjust=0.5)) +
-  scale_color_manual(name = "Richness Trend", values = c("black","black")) + 
-  scale_fill_manual(name = "Richness Trend", values = c("#2db27d", "#481b6d")) + 
+  scale_color_manual(name = "Richness Pattern", values = c("black","black")) + 
+  scale_fill_manual(name = "Richness Pattern", values = c("#2db27d", "#481b6d")) + 
   guides(size = FALSE) 
 
 # PERMANOVA by Chao1 trend at 12 months
@@ -418,8 +418,8 @@ PCoA_fungi_shannon_3 + stat_ellipse(level = 0.95, geom = "polygon", alpha = 1/6,
         axis.text = element_text(size = 9.5),
         strip.text.x = element_text(face = "bold"),
         plot.title = element_text(colour = "black", size = 10, face = "bold", hjust=0.5)) +
-  scale_color_manual(name = "Alpha Diveristy Trend", values = c("black","black")) + #outer shape color
-  scale_fill_manual(name = "Alpha Diveristy Trend", values = c("#2db27d", "#481b6d")) + #inside shape color
+  scale_color_manual(name = "Alpha Diveristy Pattern", values = c("black","black")) + #outer shape color
+  scale_fill_manual(name = "Alpha Diveristy Pattern", values = c("#2db27d", "#481b6d")) + #inside shape color
   guides(size = FALSE) # To hide legend, add this inside parenthesis: color = FALSE, fill = FALSE, shape = FALSE
 
 # PERMANOVA by Shannon trend at 3 months
@@ -479,8 +479,8 @@ PCoA_fungi_shannon_12 + stat_ellipse(level = 0.95, geom = "polygon", alpha = 1/6
         axis.text = element_text(size = 9.5),
         strip.text.x = element_text(face = "bold"),
         plot.title = element_text(colour = "black", size = 10, face = "bold", hjust=0.5)) +
-  scale_color_manual(name = "Alpha Diveristy Trend", values = c("black","black")) +
-  scale_fill_manual(name = "Alpha Diveristy Trend", values = c("#2db27d", "#481b6d")) + 
+  scale_color_manual(name = "Alpha Diveristy Pattern", values = c("black","black")) +
+  scale_fill_manual(name = "Alpha Diveristy Pattern", values = c("#2db27d", "#481b6d")) + 
   guides(size = FALSE) 
 
 # PERMANOVA by Shannon trend at 12 months
@@ -551,7 +551,7 @@ pmelt_fungi_genus10_chao1$Chao1_dif_cat <- factor(pmelt_fungi_genus10_chao1$Chao
 # Plot relative abundance of top 10 fungal genera by sample time and Chao1 trend (Figure 1F)
 fungal_genus_chao1 <- ggplot(pmelt_fungi_genus10_chao1, aes(x = Chao1_dif_cat, y = Abundance, fill = Genus, colour = Genus)) + 
   geom_bar(stat = "identity", position = "fill") + 
-  xlab("Richness Trend") + 
+  xlab("Richness Pattern") + 
   ylab("Relative Abundance") +
   facet_wrap(~ Sample_time_month) +
   scale_fill_manual(values=c("#440154","mediumorchid4","#0093af","deepskyblue4","darkcyan","#35b779","olivedrab3","#cde11d","gold1","#fde725"))+
@@ -560,11 +560,10 @@ fungal_genus_chao1 <- ggplot(pmelt_fungi_genus10_chao1, aes(x = Chao1_dif_cat, y
   theme_bw()+
   theme(axis.title = element_text(face = "bold", size = 10),
         axis.text = element_text(size = 9),
-        #axis.text.x = element_text(angle = 70, hjust = 1),
         legend.title = element_text(face = "bold", size = 9), 
         legend.text = element_text(size = 9, face = "italic"),
         legend.text.align = 0,
-        legend.position = "none",
+        legend.position = "right",
         strip.text.x = element_text(size = 9,face = "bold"),
         strip.background = element_rect(color = "white", fill = "white", size = 0.5),
         plot.title = element_text(hjust = 0.5))
@@ -579,7 +578,7 @@ pmelt_fungi_genus10_shannon$Shannon_dif_cat <- factor(pmelt_fungi_genus10_shanno
 # Plot relative abundance of top 10 fungal genera by sample time and Shannon trend (Figure S1C)
 fungal_genus_shannon <- ggplot(pmelt_fungi_genus10_clean, aes(x = Shannon_dif_cat, y = Abundance, fill = Genus, colour = Genus)) + 
   geom_bar(stat = "identity", position = "fill") + 
-  xlab("Alpha Diversity Trend") + 
+  xlab("Alpha Diversity Pattern") + 
   ylab("Relative Abundance") +
   facet_wrap(~ Sample_time_month) +
   scale_fill_manual(values=c("#440154","mediumorchid4","#0093af","deepskyblue4","darkcyan","#35b779","olivedrab3","#cde11d","gold1","#fde725"))+
@@ -596,3 +595,50 @@ fungal_genus_shannon <- ggplot(pmelt_fungi_genus10_clean, aes(x = Shannon_dif_ca
         strip.background = element_rect(color = "white", fill = "white", size = 0.5),
         plot.title = element_text(hjust = 0.5))
 fungal_genus_shannon
+
+# Relative abundance plots per genera by sample time and Chao1 pattern for top 10 genera (Figure S2)
+
+# Filter genus-level data per genera for individual boxplots of relative abundance by Chao1 pattern at 3 and 12 months
+pmelt_candida <- pmelt_fungi_genus_chao1 %>% filter(Genus == "g__Candida")
+
+# Plot relative abundance per genera by Chao1 pattern at 3 and 12 months (Figure S2)
+candida_fig <- ggplot(pmelt_candida, aes(x = Chao1_dif_cat, y = Abundance, fill = Chao1_dif_cat, color = Chao1_dif_cat)) + 
+  geom_boxplot(alpha = 0.6) +
+  geom_jitter(position = position_jitter(0.2),  size = 1.2) + 
+  scale_color_manual(values = c("black", "black"))+
+  scale_fill_manual(values = c("#2db27d", "#481b6d"))+
+  xlab("Richness Pattern")+
+  ylab("Relative Abundance")+
+  ggtitle("Candida spp.")+
+  facet_wrap(~Sample_time_month)+
+  scale_y_continuous(labels = scales::percent)+
+  theme_bw()+
+  theme(axis.title = element_text(face = "bold", size = 10),
+        axis.text = element_text(size = 9),
+        strip.text.x = element_text(size = 10,face = "bold"),
+        strip.background = element_rect(color = "white", fill = "white", size = 0.5),
+        plot.title = element_text(hjust = 0.5, face = "bold.italic", size = 10))
+candida_fig
+
+# Load clr-transformed abundance ps object previously generated for taxa heat maps
+load("ps_fungi_clean_clr")
+
+# Remove participants with NA or Unchanged values for Chao1 pattern from ps object
+ps_fungi_genus_noNA <- subset_samples(ps_fungi_clean_clr, Chao1_dif_cat != "Unchanged")
+ps_fungi_genus_noNA # Check N
+ps_fungi_genus_noNA <- subset_samples(ps_fungi_genus_noNA, Chao1_dif_cat != "NA")
+ps_fungi_genus_noNA # Check N
+
+# Create dataframe with abundance information per genera for top 10 fungal genera by sample time
+ps_candida <- subset_taxa(ps_fungi_genus_noNA, Genus == "g__Candida")
+pmelt_candida <- psmelt(ps_candida)
+pmelt_candida_3 <- pmelt_candida %>% filter(Sample_time == 3)
+pmelt_candida_12 <- pmelt_candida %>% filter(Sample_time == 12)
+
+# Perform Shapiro test for normality and Wilcox test per sample time for differences in abundance by Chao1 pattern
+shapiro.test(pmelt_candida_3$Abundance)
+wilcox.test(pmelt_candida_3$Abundance ~ Chao1_dif_cat, data = pmelt_candida_3)
+shapiro.test(pmelt_candida_12$Abundance)
+wilcox.test(pmelt_candida_12$Abundance ~ Chao1_dif_cat, data = pmelt_candida_12)
+
+# Repeat for Cladosporium, Debaromyces, Fomitopsis, Ganoderma, Malassezia, Mycosphaerella, Resinicium, Rhodotorula & Saccharomyces
