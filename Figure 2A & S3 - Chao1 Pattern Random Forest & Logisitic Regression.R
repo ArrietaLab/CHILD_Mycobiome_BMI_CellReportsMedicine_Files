@@ -123,7 +123,7 @@ m <- round_df(m, 2)
 # Assign features to categories for colour coding figure
 m1 <- m %>% mutate(Factor = case_when(features %in% c("sex", "csec", "Site_Vancouver", "Child_6moto1Y_abs", "Mother_abs_birth_yn", "age_stool") ~ "Early Life Factors", features %in% c("BF_3m_status_new", "BF_duration_imp", "solids_6m") ~ "Infant Nutrition", features %in% c("Shannon_bacteria_3m","Shannon_bacteria_12m","PCoA1_bacteria_3m","PCoA1_bacteria_12m") ~ "Infant Microbiome", features %in% c("mom_bmi_best", "hei2010", "Prebirth_abs_oralIV_yn", "AS_bev4") ~ "Maternal Factors", features %in% c("BMIz_3mo", "BMIz_1yr") ~ "Infant BMIz", features %in% c("Father_BMI") ~ "Paternal Factors"))
 
-# Plot random forest results by mean decreasing Gini index
+# Plot random forest results by mean decreasing Gini index (Figure 2A)
 random_forest_fig <- ggplot(m1, aes(reorder(features, MeanDecreaseGini), MeanDecreaseGini, fill=Factor))+ 
   geom_bar(stat="identity",  color = "black", width=0.6)+
   labs(colour = NULL)+ labs(x="", y ="Mean Decreasing Gini Index")+
@@ -179,7 +179,7 @@ logisticr_df$stars <- cut(logisticr_df$p.value, breaks=c(-Inf, 0.001, 0.01, 0.05
 # Order variables based on random forest mean decreasing Gini index to enable consistent plots
 logisticr_df$Variable <- factor(logisticr_df$Variable, levels = c("Prebirth_abs_oralIV_ynYes", "BF_3m_status_newExclusive", "AS_bev43", "csecC-Section", "Child_6moto1Y_abs1", "sexFemale", "Site_VancouverOther", "Mother_abs_birth_ynYes", "solids_6mYes", "BF_duration_months", "BMIz_3mo", "hei2010_5", "mom_bmi_best_5", "Father_BMI_5", "BMIz_1yr"))
 
-# Forest plot of logistic regression results 
+# Forest plot of logistic regression results (Figure S3)
 log_regression_fp <- ggplot(logisticr_df, aes(x=Variable, y=OR, ymin=Lower, ymax=Upper, color = Factor))+
   geom_pointrange(position = position_dodge(width = 0.60))+
   geom_hline(yintercept = 1, linetype=2)+
