@@ -145,6 +145,7 @@ permanova_fungi$aov.tab
 # Process repeated for Shannon index
 # All subsequent analyses done using Chao1 and Shannon categories for change from 3 months to 1 year
 
+# Reload metadata with alpha diversity patterns
 fungi_data <- read.csv("fungi_data_adiv_patterns.csv")
 
 # Rereate filtered dataframes by timepoint
