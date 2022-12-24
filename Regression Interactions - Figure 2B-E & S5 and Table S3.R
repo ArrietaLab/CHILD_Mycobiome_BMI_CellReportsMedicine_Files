@@ -1,4 +1,4 @@
-#Regression interactions (Figure 2, Table S3 and Figure S5)
+#Regression interactions (Figure 2B-E, Table S3 and Figure S5)
 
 #load packages 
 library(tidyverse)
